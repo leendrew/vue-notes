@@ -4,11 +4,13 @@ import type { ConfigEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 
 export default ({ mode }: ConfigEnv) => {
-  process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
-  console.log(mode);
+  process.env = {
+    ...process.env,
+    ...loadEnv(mode, process.cwd()),
+  };
 
   return defineConfig({
-    base: './',
+    base: '/vue-notes',
     plugins: [vue()],
     resolve: {
       alias: {
