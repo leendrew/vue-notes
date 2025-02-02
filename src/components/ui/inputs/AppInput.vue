@@ -5,6 +5,7 @@ import InputError, { type InputErrorProps } from './InputError.vue';
 import InputCounter, { type InputCounterProps } from './InputCounter.vue';
 
 interface AppInputProps {
+  modelValue: string;
   label?: InputLabelProps['text'];
   errors?: InputErrorProps['text'][];
   counterValue?: InputCounterProps['value'] | null;
@@ -12,11 +13,22 @@ interface AppInputProps {
 }
 
 const {
+  modelValue,
   label = '',
   errors = [],
   counterValue = null,
   counterMaxValue = null,
 } = defineProps<AppInputProps>();
+const emit = defineEmits(['update:modelValue']);
+
+const inputValue = computed({
+  get() {
+    return modelValue;
+  },
+  set(value) {
+    emit('update:modelValue', value);
+  },
+});
 
 const firstError = computed(() => errors[0]);
 const hasCounter = computed(() => counterValue !== null);
@@ -30,13 +42,16 @@ const hasCounter = computed(() => counterValue !== null);
         :text="label"
       />
     </template>
-    <label class="wrapper__input input">
-      <input
-        class="native-input"
-        v-bind="$attrs"
-      />
+    <div class="wrapper__input">
+      <label class="input">
+        <input
+          v-model="inputValue"
+          class="native-input"
+          v-bind="$attrs"
+        />
+      </label>
       <slot name="append-inner" />
-    </label>
+    </div>
     <template v-if="firstError || hasCounter">
       <div class="wrapper__footer footer">
         <template v-if="firstError">
@@ -85,6 +100,10 @@ const hasCounter = computed(() => counterValue !== null);
   --input-wrapper-border-color: transparent;
   --input-wrapper-padding-inline: 22px;
 
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
   cursor: text;
   padding-inline: 28px;
   padding-block: var(--input-wrapper-padding-inline);
@@ -97,5 +116,9 @@ const hasCounter = computed(() => counterValue !== null);
 
 .wrapper__input:has(.native-input:hover, .native-input:focus-visible) {
   --input-wrapper-border-color: var(--color-green-light);
+}
+
+.input {
+  width: 100%;
 }
 </style>

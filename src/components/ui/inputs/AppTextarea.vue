@@ -5,6 +5,7 @@ import InputError, { type InputErrorProps } from './InputError.vue';
 import InputCounter, { type InputCounterProps } from './InputCounter.vue';
 
 interface AppInputProps {
+  modelValue: string;
   label?: InputLabelProps['text'];
   errors?: InputErrorProps['text'][];
   counterValue?: InputCounterProps['value'] | null;
@@ -12,11 +13,22 @@ interface AppInputProps {
 }
 
 const {
+  modelValue,
   label = '',
   errors = [],
   counterValue = null,
   counterMaxValue = null,
 } = defineProps<AppInputProps>();
+const emit = defineEmits(['update:modelValue']);
+
+const inputValue = computed({
+  get() {
+    return modelValue;
+  },
+  set(value) {
+    emit('update:modelValue', value);
+  },
+});
 
 const firstError = computed(() => errors[0]);
 const hasCounter = computed(() => counterValue !== null);
