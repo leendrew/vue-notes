@@ -32,7 +32,7 @@ const hasCounter = computed(() => counterValue !== null);
     </template>
     <label class="wrapper__input input">
       <textarea
-        class="input__native"
+        class="native-input"
         :rows="4"
         v-bind="$attrs"
       />
@@ -95,22 +95,11 @@ const hasCounter = computed(() => counterValue !== null);
   border-color: var(--input-wrapper-border-color);
 }
 
-.wrapper__input:has(.input__native:hover, .input__native:focus-visible) {
+.wrapper__input:has(.native-input:hover, .native-input:focus-visible) {
   --input-wrapper-border-color: var(--color-green-light);
 }
 
-.input__native {
-  border-width: 0px;
-  outline: 0;
-  width: 100%;
-  font-size: var(--font-size-small);
-  line-height: var(--line-height-small);
-  font-weight: var(--font-weight-normal);
-
+.native-input {
   resize: none;
-}
-
-.input__native::placeholder {
-  color: var(--color-gray);
 }
 </style>

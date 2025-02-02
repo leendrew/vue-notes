@@ -25,7 +25,7 @@ const { icon = false } = defineProps<AppButtonProps>();
   --btn-padding-inline: 24px;
 
   height: var(--btn-size);
-  padding-inline: 24px;
+  padding-inline: var(--btn-padding-inline);
   background-color: var(--btn-bg-color);
   color: var(--color-white);
   border: 0px solid transparent;

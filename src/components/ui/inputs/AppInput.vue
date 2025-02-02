@@ -32,7 +32,7 @@ const hasCounter = computed(() => counterValue !== null);
     </template>
     <label class="wrapper__input input">
       <input
-        class="input__native"
+        class="native-input"
         v-bind="$attrs"
       />
       <slot name="append-inner" />
