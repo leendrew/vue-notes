@@ -14,6 +14,8 @@ export interface LoginRequestDto {
   password: Password;
 }
 
+export type Token = string;
+
 export interface LoginResponseDto {
-  accessToken: string;
+  accessToken: Token;
 }
