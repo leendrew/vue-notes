@@ -12,6 +12,7 @@ const { icon = false } = defineProps<AppButtonProps>();
     :class="{
       icon,
     }"
+    type="button"
     v-bind="$attrs"
   >
     <slot />
