@@ -45,57 +45,36 @@ const { is = 'span', variant = 'body' } = defineProps<TypographyProps>();
 .h2 {
   font-size: var(--font-size-h2);
   line-height: var(--line-height-h2);
-  font-weight: var(--font-weight-black);
   font-weight: var(--font-weight-semibold);
 }
 
 .h3 {
   font-size: var(--font-size-h3);
   line-height: var(--line-height-h3);
-  font-weight: var(--font-weight-black);
-  font-weight: var(--font-weight-semibold);
   font-weight: var(--font-weight-normal);
 }
 
 .h4 {
   font-size: var(--font-size-h4);
   line-height: var(--line-height-h4);
-  font-weight: var(--font-weight-black);
-  font-weight: var(--font-weight-semibold);
-  font-weight: var(--font-weight-normal);
   font-weight: var(--font-weight-semibold);
 }
 
 .body {
   font-size: var(--font-size-body);
   line-height: var(--line-height-body);
-  font-weight: var(--font-weight-black);
-  font-weight: var(--font-weight-semibold);
-  font-weight: var(--font-weight-normal);
-  font-weight: var(--font-weight-semibold);
   font-weight: var(--font-weight-medium);
 }
 
 .small {
   font-size: var(--font-size-small);
   line-height: var(--line-height-small);
-  font-weight: var(--font-weight-black);
-  font-weight: var(--font-weight-semibold);
-  font-weight: var(--font-weight-normal);
-  font-weight: var(--font-weight-semibold);
-  font-weight: var(--font-weight-medium);
   font-weight: var(--font-weight-normal);
 }
 
 .small-bold {
   font-size: var(--font-size-small-bold);
   line-height: var(--line-height-small-bold);
-  font-weight: var(--font-weight-black);
-  font-weight: var(--font-weight-semibold);
-  font-weight: var(--font-weight-normal);
-  font-weight: var(--font-weight-semibold);
-  font-weight: var(--font-weight-medium);
-  font-weight: var(--font-weight-normal);
   font-weight: var(--font-weight-bold);
 }
 
