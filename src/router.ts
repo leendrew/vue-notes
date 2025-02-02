@@ -29,7 +29,6 @@ export const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const authStore = useAuthStore();
-  console.log(authStore.isAuth, to);
 
   if (to?.meta?.private && !authStore.isAuth) {
     return next({ name: routeConfig.home.name });
