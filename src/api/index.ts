@@ -1,3 +1,3 @@
-export * from './register/register.service';
+export * from './register';
 export * from './auth';
-export * from './notes/notes.service';
+export * from './notes';
