@@ -15,15 +15,3 @@ const { to, ...rest } = defineProps<AppLinkProps>();
     <slot />
   </RouterLink>
 </template>
-
-<style scoped>
-.link {
-  --link-color: var(--color-green-light);
-
-  color: var(--link-color);
-}
-
-.link:hover {
-  --link-color: var(--color--white);
-}
-</style>
