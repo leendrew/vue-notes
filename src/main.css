@@ -109,3 +109,13 @@ img {
 .native-input::placeholder {
   color: var(--color-gray);
 }
+
+.link {
+  --link-color: var(--color-green-light);
+
+  color: var(--link-color);
+}
+
+.link:hover {
+  --link-color: var(--color--white);
+}
