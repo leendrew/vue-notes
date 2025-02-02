@@ -1,10 +1,14 @@
 export const routeConfig = {
   home: {
     name: 'home',
-    path: '/',
+    path: '/vue-notes/',
+  },
+  notes: {
+    name: 'notes',
+    path: '/vue-notes/notes',
   },
   error: {
     name: '404',
-    path: '/:pathMatch(.*)*',
+    path: '/vue-notes/:pathMatch(.*)*',
   },
 } as const;
