@@ -35,6 +35,7 @@ const { icon = false } = defineProps<AppButtonProps>();
   justify-content: center;
   align-items: center;
   gap: 12px;
+  cursor: pointer;
 }
 
 .button:hover {
