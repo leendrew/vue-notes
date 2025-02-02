@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
 import { routeConfig, envConfig } from '@/config';
+import { useAuthStore } from '@/store';
 
 const routes = [
   {
@@ -12,6 +13,7 @@ const routes = [
     name: routeConfig.notes.name,
     path: routeConfig.notes.path,
     component: () => import('@/pages/NotesPage.vue'),
+    meta: routeConfig.notes.meta,
   },
   {
     name: routeConfig.error.name,
@@ -25,6 +27,13 @@ export const router = createRouter({
   routes,
 });
 
-// router.beforeEach((to, from, next) => {
-//   //
-// });
+router.beforeEach((to, from, next) => {
+  const authStore = useAuthStore();
+  console.log(authStore.isAuth, to);
+
+  if (to?.meta?.private && !authStore.isAuth) {
+    return next({ name: routeConfig.home.name });
+  }
+
+  return next();
+});
