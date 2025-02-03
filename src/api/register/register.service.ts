@@ -1,7 +1,7 @@
 import { apiInternal } from '@/api/internal.api';
 import type { RegisterRequestDto, RegisterResponseDto } from './register.types';
 
-const PATH = '/register';
+const PATH = '/reg';
 
 export const registerService = {
   register(payload: RegisterRequestDto) {
