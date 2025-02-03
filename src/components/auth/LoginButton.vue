@@ -2,8 +2,8 @@
 import { ref } from 'vue';
 import AppButton from '@/components/ui/AppButton.vue';
 import AppTypography from '@/components/ui/AppTypography.vue';
-import LoginIcon from '@/components/icons/LoginIcon.vue';
 import AuthModal from './AuthModal.vue';
+import LoginIcon from '@/components/icons/LoginIcon.vue';
 
 const isAuthModalShow = ref<boolean>(false);
 
