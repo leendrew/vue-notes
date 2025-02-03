@@ -31,12 +31,16 @@ const getNotes = async () => {
 };
 
 const onDeleteNote = async (noteId: Note['id']) => {
-  console.log('@ click delete note', noteId);
   try {
     await notesService.deleteOneById(noteId);
+    notes.value = notes.value.filter(({ id }) => id !== noteId);
   } catch (e) {
-    console.error(e);
+    errorMessage.value = (e as ApiResponseFail).response!.data.message;
   }
+};
+
+const onAddNote = (note: Note) => {
+  notes.value.push(note);
 };
 </script>
 
@@ -59,7 +63,10 @@ const onDeleteNote = async (noteId: Note['id']) => {
           </template>
         </div>
       </template>
-      <AddNoteButton class="notes__add-button" />
+      <AddNoteButton
+        class="notes__add-button"
+        @add:note="onAddNote"
+      />
       <template v-if="errorMessage">
         <div class="notes__text errors">
           <template v-if="Array.isArray(errorMessage)">
