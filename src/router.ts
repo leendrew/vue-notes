@@ -1,7 +1,7 @@
-import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
-import { routeConfig, envConfig } from '@/config';
 import { useAuthStore } from '@/store';
+import { routeConfig } from '@/config';
 
 const routes = [
   {
