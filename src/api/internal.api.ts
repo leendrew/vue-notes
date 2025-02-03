@@ -17,9 +17,3 @@ apiInternal.interceptors.request.use((config) => {
 
   return config;
 });
-
-export interface ApiResponseFail {
-  message: string | string[];
-  error: string;
-  statusCode: number;
-}
