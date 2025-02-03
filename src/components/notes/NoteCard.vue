@@ -54,7 +54,7 @@ const onDeleteClick = () => {
   background-color: var(--bg-color);
   color: var(--text-color);
   border-radius: 12px;
-  box-shadow: 0px 15px 46px -10px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 15px 15px -10px rgba(0, 0, 0, 0.4);
 }
 
 .note__header {
