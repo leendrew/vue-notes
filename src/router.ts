@@ -23,11 +23,11 @@ const routes = [
 ] satisfies RouteRecordRaw[];
 
 export const router = createRouter({
-  history: envConfig.isDev ? createWebHistory() : createWebHashHistory(),
+  history: createWebHistory(),
   routes,
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _, next) => {
   const authStore = useAuthStore();
 
   if (to?.meta?.private && !authStore.isAuth) {
