@@ -114,6 +114,7 @@ img {
   --link-color: var(--color-green-light);
 
   color: var(--link-color);
+  cursor: pointer;
 }
 
 .link:hover {
