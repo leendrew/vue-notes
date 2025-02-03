@@ -14,7 +14,7 @@ interface PasswordInputProps {
 const { modelValue, mode = 'password' } = defineProps<PasswordInputProps>();
 const emit = defineEmits(['update:modelValue']);
 
-const inputValue = computed({
+const inputValue = computed<string>({
   get() {
     return modelValue;
   },

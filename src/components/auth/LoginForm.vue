@@ -30,8 +30,7 @@ const onToRegisterClick = () => {
 
 const onSubmit = async () => {
   try {
-    const response = await authStore.login(form);
-    console.log('@ login response', response);
+    await authStore.login(form);
     router.push({ name: routeConfig.notes.name });
   } catch (e) {
     errorMessage.value = (e as ApiResponseFail).response!.data.message;
@@ -48,8 +47,12 @@ const onSubmit = async () => {
       v-model="form.email"
       type="email"
       label="Email"
+      placeholder="Введите Email"
     />
-    <PasswordInput v-model="form.password" />
+    <PasswordInput
+      v-model="form.password"
+      placeholder="Введите пароль"
+    />
     <div class="form__actions actions">
       <span class="actions__navigation">
         <AppTypography variant="small">У вас нет аккаунта?</AppTypography>

@@ -13,7 +13,7 @@ interface AuthModalProps {
 const { modelValue } = defineProps<AuthModalProps>();
 const emit = defineEmits(['update:modelValue']);
 
-const isModalOpen = computed({
+const isModalOpen = computed<boolean>({
   get() {
     return modelValue;
   },

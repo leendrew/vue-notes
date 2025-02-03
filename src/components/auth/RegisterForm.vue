@@ -54,11 +54,16 @@ const onSubmit = async () => {
       v-model="form.email"
       type="email"
       label="Email"
+      placeholder="Введите Email"
     />
-    <PasswordInput v-model="form.password" />
+    <PasswordInput
+      v-model="form.password"
+      placeholder="Введите пароль"
+    />
     <PasswordInput
       v-model="form.confirm_password"
       label="Пароль еще раз"
+      placeholder="Введите пароль еще раз"
     />
     <div class="form__actions actions">
       <span class="actions__navigation">

@@ -8,7 +8,7 @@ export interface InputCounterProps {
 }
 
 const { value, maxValue = null } = defineProps<InputCounterProps>();
-const text = computed(() => `${value}${maxValue ? `/${maxValue}` : ''}`);
+const text = computed<string>(() => `${value}${maxValue ? `/${maxValue}` : ''}`);
 </script>
 
 <template>

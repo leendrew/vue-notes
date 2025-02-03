@@ -21,7 +21,7 @@ const {
 } = defineProps<AppInputProps>();
 const emit = defineEmits(['update:modelValue']);
 
-const inputValue = computed({
+const inputValue = computed<string>({
   get() {
     return modelValue;
   },
@@ -30,8 +30,8 @@ const inputValue = computed({
   },
 });
 
-const firstError = computed(() => errors[0]);
-const hasCounter = computed(() => counterValue !== null);
+const firstError = computed<string>(() => errors[0]);
+const hasCounter = computed<boolean>(() => counterValue !== null);
 </script>
 
 <template>
@@ -44,6 +44,7 @@ const hasCounter = computed(() => counterValue !== null);
     </template>
     <label class="wrapper__input input">
       <textarea
+        v-model="inputValue"
         class="native-input"
         :rows="4"
         v-bind="$attrs"
