@@ -3,36 +3,58 @@ import { defineStore, acceptHMRUpdate } from 'pinia';
 import { useUserStore } from './user.store';
 import { authService } from '@/api';
 import type { LoginRequestDto } from '@/api';
-import { HTTP_STATUS_CODE } from '@/constants';
 
 export const useAuthStore = defineStore('auth', () => {
   const isAuth = ref<boolean>(false);
   const accessToken = ref<string>(localStorage.getItem('accessToken') || '');
 
   const login = async (payload: LoginRequestDto) => {
-    const response = await authService.login(payload);
-    if (response.status !== HTTP_STATUS_CODE.ok) {
-      return;
-    }
+    try {
+      const response = await authService.login(payload);
 
-    const { accessToken: token } = response.data;
-    isAuth.value = true;
-    accessToken.value = token;
-    localStorage.setItem('accessToken', token);
+      const { accessToken: token } = response.data;
+      isAuth.value = true;
+      accessToken.value = token;
+      localStorage.setItem('accessToken', token);
+
+      await getMyself();
+
+      return response;
+    } catch (e) {
+      throw e;
+    }
   };
 
   const logout = async () => {
-    const response = await authService.logout();
-    if (response.status !== HTTP_STATUS_CODE.ok) {
-      return;
+    try {
+      const response = await authService.logout();
+
+      const userStore = useUserStore();
+
+      isAuth.value = false;
+      accessToken.value = '';
+      localStorage.removeItem('accessToken');
+      userStore.setUser(null);
+
+      return response;
+    } catch (e) {
+      throw e;
     }
+  };
 
-    const userStore = useUserStore();
+  const getMyself = async () => {
+    try {
+      const response = await authService.getMyself();
 
-    isAuth.value = false;
-    accessToken.value = '';
-    localStorage.removeItem('accessToken');
-    userStore.setUser(null);
+      const userStore = useUserStore();
+
+      isAuth.value = true;
+      userStore.setUser(response.data);
+
+      return response;
+    } catch (e) {
+      throw e;
+    }
   };
 
   return {
@@ -40,6 +62,7 @@ export const useAuthStore = defineStore('auth', () => {
     accessToken,
     login,
     logout,
+    getMyself,
   };
 });
 
