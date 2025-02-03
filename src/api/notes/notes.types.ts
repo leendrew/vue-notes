@@ -6,6 +6,6 @@ export interface Note {
 
 export type GetAllResponseDto = Note[];
 
-export type CreateOneRequestDto = Pick<Note, 'title' | 'content'>;
+export type CreateNoteRequestDto = Pick<Note, 'title' | 'content'>;
 
 export type CreateOneResponseDto = Note;
