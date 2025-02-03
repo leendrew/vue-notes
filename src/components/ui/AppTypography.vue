@@ -21,8 +21,6 @@ interface TypographyProps {
 }
 
 const { is = 'span', variant = 'body' } = defineProps<TypographyProps>();
-
-// TODO: автозамену variant на variant--mobile и наоборот в зависимости от брейкпоинта
 </script>
 
 <template>
@@ -118,5 +116,49 @@ const { is = 'span', variant = 'body' } = defineProps<TypographyProps>();
   font-size: var(--font-size-small-bold-mobile);
   line-height: var(--line-height-small-bold-mobile);
   font-weight: var(--font-weight-bold);
+}
+
+@media screen and (max-width: 576px) {
+  .h1 {
+    font-size: var(--font-size-h1-mobile);
+    line-height: var(--line-height-h1-mobile);
+    font-weight: var(--font-weight-black);
+  }
+
+  .h2 {
+    font-size: var(--font-size-h2-mobile);
+    line-height: var(--line-height-h2-mobile);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .h3 {
+    font-size: var(--font-size-h3-mobile);
+    line-height: var(--line-height-h3-mobile);
+    font-weight: var(--font-weight-normal);
+  }
+
+  .h4 {
+    font-size: var(--font-size-h4-mobile);
+    line-height: var(--line-height-h4-mobile);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .body {
+    font-size: var(--font-size-body-mobile);
+    line-height: var(--line-height-body-mobile);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .small {
+    font-size: var(--font-size-small-mobile);
+    line-height: var(--line-height-small-mobile);
+    font-weight: var(--font-weight-normal);
+  }
+
+  .small-bold {
+    font-size: var(--font-size-small-bold-mobile);
+    line-height: var(--line-height-small-bold-mobile);
+    font-weight: var(--font-weight-bold);
+  }
 }
 </style>
