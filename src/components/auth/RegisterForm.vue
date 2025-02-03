@@ -11,12 +11,14 @@ import { registerService } from '@/api';
 import type { RegisterRequestDto, ApiResponseFailData, ApiResponseFail } from '@/api';
 import { routeConfig } from '@/config';
 
+type RegisterFormData = RegisterRequestDto;
+
 const emit = defineEmits(['toggle:form-type']);
 
 const router = useRouter();
 const authStore = useAuthStore();
 
-const form = reactive<RegisterRequestDto>({
+const form = reactive<RegisterFormData>({
   email: '',
   password: '',
   confirm_password: '',

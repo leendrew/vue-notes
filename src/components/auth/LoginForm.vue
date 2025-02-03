@@ -10,12 +10,14 @@ import ErrorMessage from '@/components/ErrorMessage.vue';
 import type { LoginRequestDto, ApiResponseFailData, ApiResponseFail } from '@/api';
 import { routeConfig } from '@/config';
 
+type LoginFormData = LoginRequestDto;
+
 const emit = defineEmits(['toggle:form-type']);
 
 const router = useRouter();
 const authStore = useAuthStore();
 
-const form = reactive<LoginRequestDto>({
+const form = reactive<LoginFormData>({
   email: '',
   password: '',
 });
