@@ -47,14 +47,36 @@ const onDeleteClick = () => {
 
 <style scoped>
 .note {
-  --bg-color: var(--color-green-light);
-  --text-color: var(--color-white);
+  --note-bg-color: var(--color-green-light);
+  --note-text-color: var(--color-white);
+  --note-border-radius: 12px;
+  --note-corner-size: 40px;
 
+  position: relative;
   height: fit-content;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  border-radius: 12px;
+  background-color: var(--note-bg-color);
+  color: var(--note-text-color);
+  border-radius: var(--note-border-radius);
   box-shadow: 0px 15px 15px -10px rgba(0, 0, 0, 0.4);
+  clip-path: polygon(
+    calc(100% - var(--note-corner-size)) 0,
+    100% calc(0% + var(--note-corner-size)),
+    100% 100%,
+    0 100%,
+    0 0
+  );
+}
+
+.note::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--note-corner-size);
+  height: var(--note-corner-size);
+  background-color: var(--color-green);
+  border-bottom-left-radius: var(--note-border-radius);
+  clip-path: polygon(0 0, 0 100%, 100% 100%);
 }
 
 .note__header {
