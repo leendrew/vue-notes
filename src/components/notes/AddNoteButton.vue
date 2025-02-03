@@ -19,7 +19,10 @@ const onAddNoteClick = () => {
   >
     <PlusIcon />
     <template v-if="isAddNoteModalShow">
-      <AddNoteModal v-model="isAddNoteModalShow" />
+      <AddNoteModal
+        v-model="isAddNoteModalShow"
+        v-bind="$attrs"
+      />
     </template>
   </AppButton>
 </template>
